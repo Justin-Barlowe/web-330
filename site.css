@@ -1,0 +1,69 @@
+.container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+body {
+    font-family: "Oswald", Verdana, Arial, sans-serif;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form {
+    display: inline-block;
+    grid-template-columns: auto;
+}
+
+.form-field {
+    padding: 20px;
+}
+
+.app-header {
+    font-weight: 400;
+}
+
+a:visited {
+    color: #3C275A;
+}
+
+#return-home {
+    color: #4F3674;
+    text-decoration: none;
+}
+
+.assign-container {
+    padding: 10px;
+}
+
+.assign-content {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+.assign-results-text {
+    text-align: center;
+    font-size: 28px;
+}
+
+h2, h3, h4 {
+    background-color: var(--heading-background-color);
+    color: white;
+    border: var(--heading-border-color);
+    padding: 10px;
+}
