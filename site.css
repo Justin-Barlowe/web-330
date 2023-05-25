@@ -1,4 +1,11 @@
-.container {
+/* 
+; Title: site.css
+; Author: Justin Barlowe
+; Date: 24 May 2023
+; Description: Site CSS page
+ */
+
+#container {
     margin-top: 50px;
     margin-left: 100px;
     margin-right: 100px;
@@ -6,10 +13,6 @@
 
 body {
     font-family: "Oswald", Verdana, Arial, sans-serif;
-}
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .input {
@@ -38,10 +41,6 @@ body {
     font-weight: 400;
 }
 
-a:visited {
-    color: #3C275A;
-}
-
 #return-home {
     color: #4F3674;
     text-decoration: none;
@@ -61,7 +60,7 @@ a:visited {
     font-size: 28px;
 }
 
-h2, h3, h4 {
+ h2, h3, h4 {
     background-color: var(--heading-background-color);
     color: white;
     border: var(--heading-border-color);
