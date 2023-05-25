@@ -1,0 +1,146 @@
+.container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+body {
+    font-family: "Oswald", Verdana, Arial, sans-serif;
+}
+.container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    background-color: var(--card-background-color);
+}
+
+.card-title {
+    font-size: 16px;
+    color: ;
+    font-weight: 400;
+    padding: 5px;
+}
+
+.card-content {
+    padding-bottom: 2px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    padding: 15px 32px;
+    color: #000;
+}
+
+.input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background-color: #4F3674;
+    color: #fff;
+    
+}
+
+.btn-primary:hover {
+    background-color: #D6A800;
+    color: #4F3674;
+    cursor: pointer;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form {
+    display: inline-block;
+    grid-template-columns: auto;
+}
+
+.form-field {
+    padding: 20px;
+}
+
+.app-header {
+    font-weight: 400;
+}
+
+.drop-down-menu {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px border-box;
+    background-color: white;
+}
+
+/* a:hover {
+    background-color: #D6A800;
+    color: #4F3674;
+} */
+
+a:visited {
+    color: #3C275A;
+}
+
+/* a {
+    color: #453674;
+    text-decoration: none;
+} */
+
+#return-home {
+    color: #4F3674;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    background-color: #3C275A;
+    color: white;
+    border: 1px solid #D6A800;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;        
+}
+
+table th {
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    text-align: left;   
+    background-color: #4f3674;
+    color: white;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 6px;
+
+}
+
+table tr:hover {
+    background-color: #d6a800;
+    color: #4f3674;
+}

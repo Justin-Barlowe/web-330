@@ -1,0 +1,97 @@
+/* 
+; Title: theme.css
+; Author: Justin Barlowe
+; Date: 24 May 2023
+; Description: Theme CSS page
+ */
+
+ body.light-theme {
+    --text-color: #000;
+    --background-color: #fff;
+    --anchor-color: #4f3674;
+    --h1-background-color: #3c275a;
+    --h1-border-color: #D6a800;
+    --heading-background-color: #3c275a;
+    --heading-color: #fff;
+    --heading-border-color: #d6a800;
+    --anchor-hover-color: #4f3674;
+    --anchor-hover-background-color: #d6a800;
+    --card-background-color: #fff;
+    --card-title-color: #4f3674;
+    --btn-background-color: #4f3674;
+    --btn-color: #fff;
+    --btn-hover-background-color: #d6a800;
+    --btn-hover-color:#4f3674;
+    --input-border-color:#ccc;
+}
+
+body.dark-theme {
+    --text-color: #fafafa;
+    --background-color: #303030;
+    --anchor-color: #fff;
+    --h1-background-color: #9c27b0;
+    --h1-border-color: #9c27b0;
+    --heading-background-color: #424242;
+    --heading-color: #fff;
+    --heading-border-color: #424242;
+    --anchor-hover-color: #D176e1;
+    --anchor-hover-background-color: #303030;
+    --card-background-color: #424242;
+    --card-title-color: #d176e1;
+    --btn-background-color: #d176e1;
+    --btn-color: #fff;
+    --btn-hover-background-color: #7d4787;
+    --btn-hover-color:#fff;
+    --input-border-color:#303030;
+}
+
+* {
+    font-family: 'Oswald', Verdana, Arial, sans-serif;
+}
+
+body {
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+a {
+    color: var(--anchor-color);
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: var(--anchor-hover-background-color);
+    color: var(--anchor-hover-color);
+}
+
+h1 {
+    background-color: var(--h1-background-color);
+    color: var(--heading-color);
+    padding: 10px;
+    border: solid 1px var(--h1-border-color);
+}
+
+h2, h3, h4 {
+    color: var(--heading-color);
+    background-color: var(--heading-background-color);
+    padding: 10px;
+    border: solid 1px --heading-background-color;
+}
+
+#icon-mode:hover {
+    cursor: pointer;
+}
+
+#container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+#icon-text {
+    padding-left: 10px;
+}
+
+.pull-right {
+    float: right;
+}
