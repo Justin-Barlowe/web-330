@@ -5,25 +5,24 @@
 ; Description: Site CSS page
  */
 
+ /* Container styling. */
 #container {
     margin-top: 50px;
     margin-left: 100px;
     margin-right: 100px;
 }
 
-body {
-    font-family: "Oswald", Verdana, Arial, sans-serif;
-}
-
+/* Input styling */
 .input {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    border-color: var(--input-border-color);
 }
 
+/* Full width set */
 .full-width {
     width: 100%;
 }

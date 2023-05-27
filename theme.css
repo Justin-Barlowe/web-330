@@ -5,6 +5,7 @@
 ; Description: Theme CSS page
  */
 
+ /* Light theme variables */
 body.light-theme {
   --text-color: #000;
   --background-color: #fff;
@@ -25,6 +26,7 @@ body.light-theme {
   --input-border-color: #ccc;
 }
 
+/* Dark theme variables */
 body.dark-theme {
   --text-color: #fafafa;
   --background-color: #303030;
@@ -45,25 +47,30 @@ body.dark-theme {
   --input-border-color: #303030;
 }
 
+/* Font set */
 * {
   font-family: "Oswald", Verdana, Arial, sans-serif;
 }
 
+/* Body color set */
 body {
   color: var(--text-color);
   background: var(--background-color);
 }
 
+/* Anchor tags variable styling */
 a {
   color: var(--anchor-color);
   text-decoration: none;
 }
 
+/* Anchor hover variables set */
 a:hover {
   background-color: var(--anchor-hover-background-color);
   color: var(--anchor-hover-color);
 }
 
+/* Heading tag styling added. */
 h1 {
   background-color: var(--h1-background-color);
   color: var(--heading-color);
@@ -71,31 +78,27 @@ h1 {
   border: solid 1px var(--h1-border-color);
 }
 
-h2,
-h3,
-h4 {
-  color: var(--heading-color);
-  background-color: var(--heading-background-color);
-  padding: 10px;
-  border: solid 1px var(--heading-border-color);
-}
-
+/* Icon styling */
 #icon-mode:hover {
   cursor: pointer;
 }
 
+/* Icon padding */
 #icon-text {
   padding-left: 10px;
 }
 
+/* Styling for icon to move to right of container */
 .pull-right {
   float: right;
 }
 
-.card {
-  /* background-color: var(--card-background-color); */
-}
+/* Card styling added but commented out due to conflicts with body styling */
+/* .card {
+  background-color: var(--card-background-color);
+} */
 
+/* Card styling */
 .card-title {
   font-size: 16px;
   font-weight: 400;
@@ -107,6 +110,7 @@ h4 {
   padding-bottom: 2px;
 }
 
+/* Button styling */
 .btn {
   border: none;
   text-align: center;
