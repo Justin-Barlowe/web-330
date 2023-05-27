@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<script> setDefaultTheme()</script>
+<script>setDefaultTheme()</script>
 <!-- App header placed above this line with links to stylesheets and fonts-->
 <body class="light-theme">
     <div id="container">
@@ -68,8 +68,23 @@
         </div>
 <!-- Third card closed in divs -->
     </div>
-    
-<script type="application/JavaScript" src="/theme.js"></script>
+<script>
+    function setDefaultTheme() {
+        const bodyClass = document.body;
+        const iconElement = document.getElementById("icon-mode");
+        const iconText = document.getElementById("icon-text");
+      
+        bodyClass.classList.value = localStorage.getItem("mode") || "light-theme";
+        iconElement.classList.add(
+          localStorage.getItem("iconMode") || "fa-toggle-off"
+        );
+        iconText.innerHTML = localStorage.getItem("iconText") || "Light Mode";
+      }
+      function setSelectedTheme() {
+        document.body.classList.value = localStorage.getItem("mode") || "light-theme";
+      }
+</script>
+<script type="application/JavaScript" src="theme.js"></script>
 </body>
 
 </html>
