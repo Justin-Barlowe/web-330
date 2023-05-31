@@ -6,6 +6,7 @@
  */
 
  /* Container styling. */
+ 
 #container {
     margin-top: 50px;
     margin-left: 100px;
@@ -29,7 +30,7 @@
 
 .form {
     display: inline-block;
-    grid-template-columns: auto;
+    /* grid-template-columns: auto; */
 }
 
 .form-field {
