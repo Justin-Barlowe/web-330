@@ -93,11 +93,6 @@ h1 {
   float: right;
 }
 
-/* Card styling added but commented out due to conflicts with body styling */
-/* .card {
-  background-color: var(--card-background-color);
-} */
-
 /* Card styling */
 .card-title {
   font-size: 16px;
@@ -125,6 +120,12 @@ h1 {
 .btn-primary {
   color: var(--btn-color);
   background-color: var(--btn-background-color);
+  padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: left;
+    border: 0;
 }
 
 .btn-primary:hover {
@@ -142,3 +143,21 @@ h1 {
   background-color: var(--input-border-color);
 }
 
+.return-home {
+  align-items: left;
+  text-align: left;
+  padding: 5px;
+}
+
+.input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
