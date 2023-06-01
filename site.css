@@ -93,6 +93,8 @@
 
 .assign-content {
     width: 600px;
+    align-items: center;
+    margin: auto;
 }
 
 .assign-results-text {
