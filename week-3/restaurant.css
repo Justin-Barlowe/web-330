@@ -1,0 +1,39 @@
+/* 
+; Title: restaurant.css
+; Author: Justin Barlowe
+; Date: 6/7/2023
+; Description: CSS page for week-3
+ */
+
+/* Additional styling to improve due to site.css and 
+theme.css not matching with examples in assignment */
+
+.card-content {
+    padding: 10px;
+}
+
+.card {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.card-title {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+.card-content {
+    text-align: left;
+}
+
+.btn {
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    margin: auto;
+}

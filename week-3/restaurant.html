@@ -1,0 +1,197 @@
+<!-- 
+; Title: barlowe-restaurant.html
+; Author: Justin Barlowe
+; Date: 30 May 2023
+; Description: HTML Page for Assignment 3.2
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Web 330 - Enterprise JavaScript II</title>
+  <link href="../theme.css" rel="stylesheet">
+  <link href="../site.css" rel="stylesheet">
+  <link href="restaurant.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="light-theme">
+  <div class="assign-container">
+    <!-- Dark theme icon added with onclick function -->
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right"
+       style="font-size: 28px;"><span id="icon-text"></span></i><br>
+    <div class="assign-content">
+      <div class="app-header">
+        <h1>Welcome to the Restaurant App!</h1>
+      </div>
+      <div class="assign-content">
+        <div class="card">
+          <div class="assign-header">
+            <h2>Restaurant Menu</h2>
+          </div>
+          <div class="grid">
+            <!-- Beverages Section -->
+            <div class="card">
+              <div class="card-title">Beverages</div>
+              <div class="card-content" id="beverages">
+                <label for="soda">
+                  <input type="checkbox" id="soda" value="3.30" name="soda">Soda ($3.30)
+                </label>
+                <br>
+                <label for="sweetTea">
+                  <input type="checkbox" id="sweetTea" value="3.30" name="sweetTea">Sweet Tea ($3.30)
+                </label>
+                <br>
+                <label for="icedCoffee">
+                  <input type="checkbox" id="icedCoffee" value="2.49" name="icedCoffee">Iced Coffee ($2.49)
+                </label>
+                <br>
+                <label for="bottledWater">
+                  <input type="checkbox" id="bottledWater" value="2.15" name="bottledWater">Bottled Water ($2.15)
+                </label>
+              </div>
+            </div>
+            <!-- Appetizers section -->
+            <div class="card">
+              <div class="card-title">Appetizers</div>
+              <div class="card-content" id="appetizers">
+                <label for="nachos">
+                  <input type="checkbox" id="nachos" value="6.60" name="nachos">Nachos ($6.60)
+                </label>
+                <br>
+                <label for="chipsAndSalsa">
+                  <input type="checkbox" id="chipsAndSalsa" value="5.50" name="chipsAndSalsa">Chips and Salsa ($5.50)
+                </label>
+                <br>
+                <label for="pretzel">
+                  <input type="checkbox" id="pretzel" value="8.80" name="pretzel">Pretzel with Cheese ($8.80)
+                </label>
+                <br>
+                <label for="pickles">
+                  <input type="checkbox" id="pickles" value="8.25" name="pickles">Fried Pickles ($8.25)
+                </label>
+              </div>
+            </div>
+            <!-- Main courses section -->
+            <div class="card">
+              <div class="card-title">Main Courses</div>
+              <div class="card-content" id="mainCourses">
+                <label for="tacos">
+                  <input type="checkbox" id="tacos" value="9.70" name="tacos">Street Tacos ($9.70)
+                </label>
+                <br>
+                <label for="wings">
+                  <input type="checkbox" id="wings" value="12.80" name="wings">Boneless Wings ($12.80)
+                </label>
+                <br>
+                <label for="burger">
+                  <input type="checkbox" id="burger" value="12.65" name="burger">Cheese Burger with Fries ($12.65)
+                </label>
+                <br>
+                <label for="wrap">
+                  <input type="checkbox" id="wrap" value="9.65" name="wrap">Chicken Wrap with Salad ($9.65)
+                </label>
+              </div>
+            </div>
+            <!-- Desserts Section -->
+            <div class="card">
+              <div class="card-title">Desserts</div>
+              <div class="card-content" id="desserts">
+                <label for="iceCream">
+                  <input type="checkbox" id="iceCream" value="4.30" name="iceCream">Ice Cream ($4.30)
+                </label>
+                <br>
+                <label for="cake">
+                  <input type="checkbox" id="cake" value="5.40" name="cake">Chocolate Cake ($5.40)
+                </label>
+                <br>
+                <label for="pie">
+                  <input type="checkbox" id="pie" value="3.80" name="pie">Apple Pie ($3.80)
+                </label>
+                <br>
+              </div>
+            </div>
+            <div class="btn">
+              <button class="btn-primary" id="btnOrder">Place Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="assign-content">
+        <div class="card">
+          <div class="card-title"><h2>Order Summary</h2></div>
+          <div class="assign-results-text"><span id="orderTotal"></span></div>
+        </div>
+      </div>
+      <!-- Return home with github link due to github not correctly routing internal links -->
+      <div class="return-home">
+        <a href="https://justin-barlowe.github.io/web-330/" class="return-home">Return Home</a>
+      </div>
+    </div>
+  </div>
+
+
+<script type="module">
+  // Import classes from index.js file. 
+  import { Bill, Appetizer, Beverage, Dessert, MainCourse } from "./index.js";
+
+  //Reference DOM elements.
+  const btnOrder = document.getElementById("btnOrder");
+  const beveragesSection = document.getElementById("beverages");
+  const appetizersSection = document.getElementById("appetizers");
+  const mainCoursesSection = document.getElementById("mainCourses");
+  const dessertsSection = document.getElementById("desserts");
+
+  //Create bill class instance. 
+  const billInstance = new Bill();
+
+  //Onclick event handler. 
+  btnOrder.onclick = () => {
+
+  // Clear the bill before calculating the new total.
+  billInstance.clearBill();
+
+  //For loop to process the selection of beverages. 
+  for (const checkbox of beveragesSection.querySelectorAll('input[type="checkbox"]:checked')) {
+    const name = checkbox.name;
+    const value = parseFloat(checkbox.value);
+    const beverage = new Beverage(name, value);
+    billInstance.addBeverage(beverage);
+  }
+//For loop to process the selection of appetizers.
+  for (const checkbox of appetizersSection.querySelectorAll('input[type="checkbox"]:checked')) {
+    const name = checkbox.name;
+    const value = parseFloat(checkbox.value);
+    const appetizer = new Appetizer(name, value);
+    billInstance.addAppetizer(appetizer);
+  }
+  //For loop to process the selection of main courses.
+  for (const checkbox of mainCoursesSection.querySelectorAll('input[type="checkbox"]:checked')) {
+    const name = checkbox.name;
+    const value = parseFloat(checkbox.value);
+    const mainCourse = new MainCourse(name, value);
+    billInstance.addMainCourse(mainCourse);
+  }
+  //For loop to process the selection of deserts.
+  for (const checkbox of dessertsSection.querySelectorAll('input[type="checkbox"]:checked')) {
+    const name = checkbox.name;
+    const value = parseFloat(checkbox.value);
+    const dessert = new Dessert(name, value);
+    billInstance.addDessert(dessert);
+  }
+  //Calculate the total and push order total to the dom with 2 decimal points. 
+  const orderTotal = billInstance.getTotal();
+  document.getElementById("orderTotal").textContent = `Order Total: $${orderTotal.toFixed(2)}`;
+};
+
+</script>
+<!-- Theme JS file linked for dark mode function -->
+<script src="../theme.js"></script>
+
+</body>
+</html>
