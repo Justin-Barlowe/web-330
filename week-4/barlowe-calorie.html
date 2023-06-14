@@ -1,60 +1,132 @@
+<!-- Name:Justin Barlowe
+Title:barlowe-calorie.html
+Date: 6/13/2023
+Description: HTML file for week 4 -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Web 330 - Enterprise JavaScript II</title>
-    <link href="../theme.css" rel="stylesheet">
-    <link href="../site.css" rel="stylesheet">
-    <link href="barlowe-calorie.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>WEB 330 Enterprise JavaScript II</title>
+  <link rel="stylesheet" type="text/css" href="../theme.css">
+  <link rel="stylesheet" type="text/css" href="../site.css">
+  <link rel="stylesheet" href="barlowe-calorie.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
-<!-- App header placed above this line with links to stylesheets and fonts-->
-<body class="light-theme">
-    <div class="assign-container">
-        <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right"
-       style="font-size: 28px;"><span id="icon-text"></span></i><br>
-        <div class="assign-content">
-        <h1 class="app-header">Welcome to the Calorie App!</h1>
-        <div class="card">
-            <div class="card-content">
-                <div class="card-title"><h2>Calorie Search Form</h2>
-                </div>
-                    <div class="form">Enter a food item: <input class="input" id="txtFoodItem" value="">
-                    </div>
-                    <br>
-                    <div class="btn">
-                        <button class="btn-primary" id="btnCheckPhrase">Search</button>
-                    </div>    
-            </div>
-        </div>
-    </div>
-<!-- First card created with form for input and button with ID to be access by Javascript -->
-<br>
-<div class="assign-content">
+
+<!-- Set default theme and add icon w/ JavaScript to change -->
+<body class="light-theme"> 
+  <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span
+      id="icon-text"></span></i><br>
+  <div class="assign-content">
+    <h1 class="app-header">Welcome to the Calorie App!</h1>
+
+    <!-- First card with input and search button -->
     <div class="card">
+      <div class="card-title">
+        <div class="card-title">
+          <h2>Calorie Search Form</h2>
+        </div>
         <div class="card-content">
-            <div class="card-title"><h2>Search Results</h2></div>
-                <div class="assign-results-text">
-                    <span id="assign-results-text"></span><br>
-                    <span id="foodList"></span>
-                </div>
+          <div class="form">
+            <div class="form-field">
+              <label id="txtPhrase">Enter a food item:</label>
+              <input type="text" id="txtFoodItem" name="txtFoodItem" class="input">
             </div>
+            <span id="foodList"></span>
+            <div class="form-field">
+              <div class="btn">
+                <button class="btn-primary" id="btnSearch">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<!-- Second card created with the search results results and empty span for JavaScript to output calculation -->
-</div>
-<br>
-<div class="assign-content">
-    <!-- Return home with github link due to github not correctly routing internal links -->
-    <div class="return-home"> 
+    <br>
+    <!-- Second card with results -->
+    <div class="card">
+      <div class="card-title">
+        <div class="card-title">
+          <h2>Search Results</h2>
+        </div>
+        <!-- Results span created -->
+        <div class="card-content assign-results-text" id="assign-results">
+        </div>
+      </div>
+    </div>
+      <div class="return-home">
         <a href="https://justin-barlowe.github.io/web-330/" class="return-home">Return Home</a>
+      </div>
     </div>
-</div>
-<!-- JavaScript file linked -->
-<script src=""></script>
-<script src="../theme.js"></script>
+
+    <!-- Javascript -->
+    <script type="module">
+      //Imports
+      import { CalorieConverter } from "./calorie-converter.js";
+
+      // Variables created for food lists. 
+      const txtFoodItemEl = document.getElementById("txtFoodItem");
+      const foodListResult = document.getElementById("foodList");
+      const assignResults = document.getElementById("assign-results");
+
+      // onclick event to trigger the arrow function
+      document.getElementById("btnSearch").onclick = () => {
+
+        // get the value from the text input
+        const txtFoodItem = txtFoodItemEl.value;
+        const foods = CalorieConverter.find(txtFoodItem.toLowerCase());
+        let tableRows = "";
+
+        // iterate over the values and form data to push. 
+        for (let food of foods) {
+          tableRows += `
+            <tr>
+              <td>${food.name}</td>
+              <td>${food.calories}</td>
+            </tr>`;
+        }
+
+        // Tables and rows created. 
+        let tableData = `
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Calories</th>
+              </tr>
+            </thead>
+            <tbody>${tableRows}</tbody>
+          </table>`;
+
+        // Push results to span. 
+        assignResults.innerHTML = tableData;
+      }
+
+      //Onclick event created. 
+      document.addEventListener('keyup', (event) => {
+        if (event.key === "Enter") {
+          document.getElementById('btnSearch').click();
+        }
+      });
+
+      // Static property
+      const foodList = CalorieConverter.data;
+      
+      let foodListData = "<i>[Ex: ";
+      // Add items to food list
+      for (let food of foodList) {
+        foodListData += food.name + ", ";
+      }
+      // Edit data and produce string
+      foodListData = foodListData.slice(0, -2);
+      foodListData += "]";
+      foodListResult.innerHTML = foodListData;
+    </script>
+    <script src="../theme.js"></script>
 </body>
 </html>

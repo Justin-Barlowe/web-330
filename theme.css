@@ -1,7 +1,7 @@
 /* 
 ; Title: theme.css
 ; Author: Justin Barlowe
-; Date: 24 May 2023
+; Date: 24 May 2023 Updated 13 June 2023
 ; Description: Theme CSS page
  */
 
@@ -178,14 +178,23 @@ h1 {
 }
 
 .table {
-
-}
+  align-items: center;
+  margin: auto;
+  border: 1px solid;
+  border-collapse: separate;
+} 
 
 .table th {
   background-color: var(--table-header-background-color);
   color: var(--table-header-color);
 }
 
-.table td, th {
+.table td, tr {
   border: var(--table-border-color);
+}
+
+tr:hover {
+  background-color: var(--table-hover-background-color);
+  color: var(--table-hover-color) !important ;
+  cursor: pointer;
 }
