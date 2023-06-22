@@ -1,0 +1,23 @@
+/* Name: Justin Barlowe
+Title: barlowe-bobs-automotive-repair.css
+Date: 22 June 2023
+Description: CSS file for week 5 */
+
+#cart-message {
+    float: right;
+    color: #DF546A;
+    font-size: 12px;
+    letter-spacing: 2px;
+} 
+
+/* Change the cursor fir the <i> to pointer on hover */
+ i:hover {
+    cursor: pointer;
+} 
+
+/* Styling for the custom cart component */
+cart-component {
+    color: var(--card-title-color);
+    font-size: 20px;
+    text-align: center;
+}

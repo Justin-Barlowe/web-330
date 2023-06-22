@@ -23,7 +23,7 @@ body.light-theme {
   --btn-color: #fff;
   --btn-hover-background-color: #d6a800;
   --btn-hover-color: #4f3674;
-  --input-border-color: #ccc;
+  --input-border-color: #cccccc;
   --table-header-background-color: #4F3674;
   --table-header-color: #fff;
   --table-border-color: #ddd;
@@ -150,7 +150,6 @@ h1 {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: var(--input-border-color);
 }
 
 .return-home {
