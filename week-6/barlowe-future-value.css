@@ -1,0 +1,15 @@
+/* Name:Justin Barlowe
+Title: barlowe-future-value.css
+Date: 7/1/2023
+Description: CSS file for week 6 */
+
+.danger {
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.form-label {
+    display: inline-block;
+    padding-top: 1rem;
+}

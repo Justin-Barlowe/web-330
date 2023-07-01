@@ -15,9 +15,15 @@ Description: CSS file for week 5 */
     cursor: pointer;
 } 
 
-/* Styling for the custom cart component */
 cart-component {
     color: var(--card-title-color);
     font-size: 20px;
     text-align: center;
 }
+
+#cart-message {
+    float: right;
+    color: #DF546A;
+    font-size: 12px;
+    letter-spacing: 2px;
+} 
