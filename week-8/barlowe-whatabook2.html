@@ -1,0 +1,182 @@
+<!-- Name:Justin Barlowe
+Title:barlowe-whatabook2.html
+Date: 7/6/2023
+Description: HTML file for week 8 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 330 Enterprise JavaScript II</title>
+    <link rel="stylesheet" type="text/css" href="../theme.css">
+    <link rel="stylesheet" type="text/css" href="../site.css">
+    <link rel="stylesheet" type="text/css" href="flex-layout.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet">
+  </head>
+  <!-- Theme toggle -->
+  <body class="light-theme">
+    <i
+      onclick="toggleMode(this)"
+      id="icon-mode"
+      class="fa fa-toggle-off pull-right"
+      style="font-size: 28px">
+      <span id="icon-text"></span>
+    </i>
+    <div class="assign-content">
+      <h1 class="app-header">Welcome to the WhatABook, Part 1 App!</h1>
+        <!-- Book listing card -->
+      <div class="card">
+        <div class="card-title"><h2>Book Listing</h2></div>
+        <div class="card-content">
+          <table class="table" id="bookList"></table>
+        </div>
+      </div>
+      <!-- Selected books card -->
+      <div class="card">
+        <div class="card-title"><h2>Selected Book</h2></div>
+        <div class="card-content assign-results-text" id="selectedBook"></div>
+      </div>
+
+      <div class="return-home">
+        <a href="https://justin-barlowe.github.io/web-330/" class="return-home">Return Home</a>
+      </div>
+    </div>
+    <script type="module">
+        //Import the HttpClient class
+        import {HttpClient} from './http-client.js';
+        const http = new HttpClient();
+        //ISBN array
+        const isbns = [
+            '0345339681',
+            '0261103571',
+            '9780593099322',
+            '9780261102361',
+            '9780261102378',
+            '9780590302715',
+            '9780316769532',
+            '9780743273565',
+            '9780590405959'
+        ];
+        //params for the API call
+        const params = {
+          "bibkeys": `${isbns.join(',')}`,
+          "format": "json",
+          "jscmd": "details"
+        };
+  
+        //API call
+        http.get('https://openlibrary.org/api/books', params)
+        .then(res => {
+          document.getElementById('bookList').innerHTML = buildHtmlString(res, "table");
+          addIsbnClickEvents();
+        }).catch(e => {
+          console.log(e);
+        });
+  
+        //getBook function
+        function getBook(event) {
+
+          event.preventDefault();
+          let self = this;
+          let isbn = self.innerText;
+
+          http.get('https://openlibrary.org/api/books', params)
+          .then(res => {
+  
+
+            const getISBN = res[isbn];
+            const ISBN = {};
+            ISBN[isbn] = getISBN;
+  
+
+            document.getElementById('selectedBook').innerHTML = 
+              buildHtmlString(
+                ISBN, "ul"
+              );            
+          }).catch(e => {
+            console.log('getBook: ' + e);
+          });
+        } 
+  
+
+        function buildHtmlString(res, format) {
+          let tableString = `
+            <thead id="bookTable" class="table">
+              <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Pages</th>
+                <th>Authors</th>
+              </tr>
+            </thead>
+            <tbody>
+            `;
+          let ulString = '';
+          ulString += '<ul style="list-style-type: none; text-align: left">';
+          
+          for(let key in res) {
+            if(res.hasOwnProperty(key)) {
+              let authors = [];
+              if (res[key].details.authors) {
+                authors = res[key].details.authors.map(function (author) {
+                  return author.name;
+                });
+              }
+  
+              let bookDetails = res[key].details;
+  
+              let book = {
+                isbn: bookDetails.isbn_13 ? bookDetails.isbn_13 : bookDetails.isbn_10,
+                title: bookDetails.title,
+                description: bookDetails.subtitle ? bookDetails.subtitle : "N/A",
+                pages: bookDetails.number_of_pages ? bookDetails.number_of_pages : "N/A",
+                authors: authors.join(", "),
+              };
+  
+              ulString += `
+                <li><b>ISBN:</b> ${book.isbn}</li>
+                <li><b>Title:</b> ${book.title}</li>
+                <li><b>Description:</b> ${book.description}</li>
+                <li><b>Pages:</b> ${book.pages}</li>
+                <li><b>Authors:</b> ${book.authors}</li>
+              `;
+  
+              tableString += `
+                <tr>
+                  <td><a href='#' class='isbn-link'>${book.isbn}</td>
+                  <td>${book.title}</td>
+                  <td>${book.description}</td>
+                  <td>${book.pages}</td>
+                  <td>${book.authors}</td>
+                </tr>
+              `;
+            }
+          }
+  
+            tableString += '</tbody>';
+            ulString += '</ul>';
+  
+            if(format === 'table') return tableString;
+            return ulString;    
+        } 
+  
+        function addIsbnClickEvents() {
+          let viewButtons = document.querySelectorAll('#bookList tbody .isbn-link');
+  
+          for(let i = 0; i < viewButtons.length; i++) {
+            viewButtons[i].addEventListener('click', getBook);
+          }
+        } 
+  
+      </script>
+    
+    <script src="../theme.js"></script>
+  </body>
+</html>
