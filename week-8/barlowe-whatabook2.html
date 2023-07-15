@@ -1,6 +1,6 @@
 <!-- Name:Justin Barlowe
 Title:barlowe-whatabook2.html
-Date: 7/6/2023
+Date: 7/15/2023
 Description: HTML file for week 8 -->
 
 <!DOCTYPE html>
@@ -104,7 +104,7 @@ Description: HTML file for week 8 -->
           });
         } 
   
-
+        //buildHtmlString function
         function buildHtmlString(res, format) {
           let tableString = `
             <thead id="bookTable" class="table">
@@ -120,7 +120,7 @@ Description: HTML file for week 8 -->
             `;
           let ulString = '';
           ulString += '<ul style="list-style-type: none; text-align: left">';
-          
+          //loop through the response
           for(let key in res) {
             if(res.hasOwnProperty(key)) {
               let authors = [];
@@ -129,9 +129,9 @@ Description: HTML file for week 8 -->
                   return author.name;
                 });
               }
-  
+              //get the book details
               let bookDetails = res[key].details;
-  
+              //create the book object
               let book = {
                 isbn: bookDetails.isbn_13 ? bookDetails.isbn_13 : bookDetails.isbn_10,
                 title: bookDetails.title,
@@ -139,7 +139,7 @@ Description: HTML file for week 8 -->
                 pages: bookDetails.number_of_pages ? bookDetails.number_of_pages : "N/A",
                 authors: authors.join(", "),
               };
-  
+              //add the list items
               ulString += `
                 <li><b>ISBN:</b> ${book.isbn}</li>
                 <li><b>Title:</b> ${book.title}</li>
@@ -147,7 +147,7 @@ Description: HTML file for week 8 -->
                 <li><b>Pages:</b> ${book.pages}</li>
                 <li><b>Authors:</b> ${book.authors}</li>
               `;
-  
+              //add the table row
               tableString += `
                 <tr>
                   <td><a href='#' class='isbn-link'>${book.isbn}</td>
@@ -159,14 +159,14 @@ Description: HTML file for week 8 -->
               `;
             }
           }
-  
+          //close the table and ul
             tableString += '</tbody>';
             ulString += '</ul>';
   
             if(format === 'table') return tableString;
             return ulString;    
         } 
-  
+        //addIsbnClickEvents function
         function addIsbnClickEvents() {
           let viewButtons = document.querySelectorAll('#bookList tbody .isbn-link');
   
@@ -174,7 +174,6 @@ Description: HTML file for week 8 -->
             viewButtons[i].addEventListener('click', getBook);
           }
         } 
-  
       </script>
     
     <script src="../theme.js"></script>
